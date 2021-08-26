@@ -2,6 +2,9 @@
 #include <iomanip>
 #include <cstdio>
 
+// Makoto Miyamoto
+// Lucian Silcox COSC 1337
+
 void dispatch(char const *win_cmd, char const *nix_cmd) {
     int res = 0;
     #ifdef _WIN32
