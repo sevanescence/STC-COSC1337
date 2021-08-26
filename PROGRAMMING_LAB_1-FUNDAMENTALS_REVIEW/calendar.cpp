@@ -2,6 +2,8 @@
 #include <iomanip>
 #include <cstdio>
 
+// Compiled on GNU from MinGW64
+
 // Makoto Miyamoto
 // Lucian Silcox COSC 1337
 
