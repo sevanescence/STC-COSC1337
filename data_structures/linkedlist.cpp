@@ -77,18 +77,15 @@ template <typename _Tp> struct _list_iterator {
         return node != __x.node; 
     }
 
-    _Self end() {
-        static const _Self _end(static_cast<_Node*>(nullptr));
-        return _end;
-    }
 };
 
 template <typename _Tp> class linked_list {
     public:
-        typedef _list_node<_Tp>   _Node;
-        typedef _Tp               value_type;
-        typedef _Tp*              pointer;
-        typedef _Tp&              reference;
+        typedef _list_node<_Tp>      _Node;
+        typedef _Tp                  value_type;
+        typedef _Tp*                 pointer;
+        typedef _Tp&                 reference;
+        typedef _list_iterator<_Tp>  iterator;
 
         linked_list() : head(static_cast<_Node*>(nullptr)) {}
 
@@ -96,17 +93,34 @@ template <typename _Tp> class linked_list {
         linked_list(_Tpa ... __node_args) : head(new _Node(__node_args...)) {}
 
         // TODO write member functions
+        _Node *first() {
+            return head;
+        }
+
+        iterator begin() {
+            _list_iterator<_Tp> __it(head);
+            return __it;
+        }
+
+        iterator end() {
+            return _list_iterator<_Tp>(static_cast<_Node*>(nullptr));
+        }
     private:
         _Node *head;
 };
 
 int main() {
-    _list_node<int> node {5, 2, 3, 7, 8};
+    // _list_node<int> node {5, 2, 3, 7, 8};
     
-    _list_iterator<int> it(&node);
-    for (; it != it.end(); ++it) {
-        std::cout << it->value << ' ' << it->next << '\n';
-    }
+    // _list_iterator<int> it(&node);
+    // for (; it != it.end(); ++it) {
+    //     std::cout << it->value << ' ' << it->next << '\n';
+    // }
 
-    std::cout << sizeof(_list_iterator<char>::value_type) << '\n';
+    // std::cout << sizeof(_list_iterator<char>::value_type) << '\n';
+    linked_list<int> list {5, 2, 3, 7, 8};
+    
+    for (const auto &it : list) {
+        std::cout << it.value << ' ' << &it <<'\n';
+    }
 }
