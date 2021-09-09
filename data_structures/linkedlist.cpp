@@ -4,10 +4,6 @@
 
 // C++11+
 
-// create list node and list iterator
-
-template <typename ... _Ts> constexpr std::size_t length = sizeof...(_Ts);
-
 template <typename _Tp> struct _list_node {
     typedef _list_node<_Tp>    _Self;
     typedef _Tp                value_type;
