@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdio>
-#include <tuple>
 #include <bits/functexcept.h>
 
 template <typename _Tp, size_t _Size> struct array {
